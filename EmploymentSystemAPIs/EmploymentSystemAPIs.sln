@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpSystem.Core", "EmpSystem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpSystem.Infrastructure", "EmpSystem.Infrastructure\EmpSystem.Infrastructure.csproj", "{FC54896D-7D2E-43A0-919B-AC9CA5812F83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpSystem.UnitTest", "EmpSystem.UnitTest\EmpSystem.UnitTest.csproj", "{2F99B5E9-2297-49B8-8F47-3C3CDDE70D69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FC54896D-7D2E-43A0-919B-AC9CA5812F83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC54896D-7D2E-43A0-919B-AC9CA5812F83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC54896D-7D2E-43A0-919B-AC9CA5812F83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F99B5E9-2297-49B8-8F47-3C3CDDE70D69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F99B5E9-2297-49B8-8F47-3C3CDDE70D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F99B5E9-2297-49B8-8F47-3C3CDDE70D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F99B5E9-2297-49B8-8F47-3C3CDDE70D69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

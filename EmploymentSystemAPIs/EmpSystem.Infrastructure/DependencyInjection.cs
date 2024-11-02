@@ -1,4 +1,6 @@
 ﻿using EmpSystem.Infrastructure.DatabaseContext;
+using EmpSystem.Infrastructure.Interfaces;
+using EmpSystem.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +13,8 @@ namespace EmpSystem.Infrastructure
         {
             services.AddDbContext<EmploymentSystemDBContext>(options =>
             options.UseSqlServer(
-                configuration.GetConnectionString("EmploymentSystem")));
+                configuration.GetConnectionString("EmploymentSystemDB")));
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             return services;
         }
     }
