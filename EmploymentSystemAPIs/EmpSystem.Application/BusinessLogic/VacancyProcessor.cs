@@ -15,6 +15,44 @@ namespace EmpSystem.Application.BusinessLogic
         { 
             _unitOfWork = unitOfWork;
         }
+
+        public GenericResopne<bool> ApplyForVacancy(VacancyApplicationRequest vacancyApplicationRequest)
+        {
+            var vacancy = _unitOfWork.vacancyRepository.FindWhere(x => x.VacancyId == vacancyApplicationRequest.vacancyId).FirstOrDefault();
+            if (vacancy != null) 
+            {
+                int numOfApplicants = _unitOfWork.vacancyApplicationsRepository.GetNumOfApplicants(vacancy.VacancyId);
+                if (vacancy.IsActive)
+                {
+                    if (vacancy.ExpiryDate > DateTime.Now)
+                    {
+                        if (numOfApplicants < vacancy.MaxNumberOfApplicantions)
+                        {
+                            _unitOfWork.vacancyApplicationsRepository.AddRecord(
+                               GenericMapper<VacancyApplicationRequest, VacancyApplications>.Map(vacancyApplicationRequest));
+                            return ResponseHandler<bool>.GenerateResponse(true, Enums.ResponseStatus.Success, "Applied Successfully");
+                        }
+                        else
+                        {
+                            return ResponseHandler<bool>.GenerateResponse(false, Enums.ResponseStatus.Failed, "Vacancy exeeded Max number of aplicants");
+                        }
+                    }
+                    else
+                    {
+                        return ResponseHandler<bool>.GenerateResponse(false, Enums.ResponseStatus.Failed, "Vacancy Expired");
+                    }
+                }
+                else
+                {
+                    return ResponseHandler<bool>.GenerateResponse(false, Enums.ResponseStatus.Failed, "Vacancy Deactivated");
+                }
+            }
+            else
+            {
+                return ResponseHandler<bool>.GenerateResponse(false, Enums.ResponseStatus.Failed, "Vacancy doesn't exist");
+            }
+        }
+
         public GenericResopne<VacancyResponseDTO> CreateNewVacancy(VacancyCreateRequest vacancyCreateRequest)
         {
             var vacancy=GenericMapper<VacancyCreateRequest,Vacancy>.Map(vacancyCreateRequest);

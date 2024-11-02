@@ -24,7 +24,6 @@ namespace EmploymentSystemAPIs.Controllers
                 return _vacancyProcessor.CreateNewVacancy(vacancyCreateRequest);
             });
         }
-
         [HttpGet]
         [Route("GetAllVacancies")]
         public GenericResopne<List<VacancyResponseDTO>> GetAllVacancies()
@@ -49,6 +48,15 @@ namespace EmploymentSystemAPIs.Controllers
             return GenericExceptionHandler.Handle(() => 
             {
                 return _vacancyProcessor.DeleteVacancy(vacancyId);
+            });
+        }
+        [HttpPost]
+        [Route("ApplyForVacancy")]
+        public GenericResopne<bool> ApplyForVacancy(VacancyApplicationRequest vacancyApplicationRequest)
+        {
+            return GenericExceptionHandler.Handle(() => 
+            {
+                return _vacancyProcessor.ApplyForVacancy(vacancyApplicationRequest);
             });
         }
     }

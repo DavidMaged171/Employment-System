@@ -11,7 +11,9 @@ namespace EmpSystem.Infrastructure.Repositories
             _employmentSystemDBContext = employmentSystemDBContext;
 
             vacancyRepository=new VacancyRepository(_employmentSystemDBContext);
+            vacancyApplicationsRepository=new VacancyApplicationsRepository(_employmentSystemDBContext);
         }
         public IVacancyRepository vacancyRepository { get; set; }
+        public IVacancyApplicationsRepository vacancyApplicationsRepository { get; set; }
     }
 }
