@@ -14,7 +14,7 @@ namespace EmpSystem.Infrastructure
             services.AddDbContext<EmploymentSystemDBContext>(options =>
             options.UseSqlServer(
                 configuration.GetConnectionString("EmploymentSystemDB")));
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }
     }

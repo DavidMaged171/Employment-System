@@ -3,7 +3,7 @@ using EmpSystem.Application.Enums;
 
 namespace EmpSystem.Application.DTOs.Resopnse
 {
-    public class GenericResopne <T> where T : class
+    public class GenericResopne <T>
     {
         public ResponseStatus ResopnseStatus { get; set; }
         public string ResponseMessage { get; set; }

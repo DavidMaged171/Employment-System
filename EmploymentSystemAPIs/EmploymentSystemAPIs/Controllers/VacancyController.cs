@@ -19,9 +19,36 @@ namespace EmploymentSystemAPIs.Controllers
         [Route("CreateNewVacancy")]
         public GenericResopne<VacancyResponseDTO> CreateNewVacancy(VacancyCreateRequest vacancyCreateRequest)
         {
+            return GenericExceptionHandler.Handle(() =>
+            {
+                return _vacancyProcessor.CreateNewVacancy(vacancyCreateRequest);
+            });
+        }
+
+        [HttpGet]
+        [Route("GetAllVacancies")]
+        public GenericResopne<List<VacancyResponseDTO>> GetAllVacancies()
+        {
+            return GenericExceptionHandler.Handle(() =>
+            {
+                return _vacancyProcessor.GetAllVacancies();
+            });
+        }
+        [HttpPut]
+        [Route("UpdateVacancy")]
+        public GenericResopne<VacancyResponseDTO> UpdateVacancy(VacancyUpdateReuest vacancyUpdateReuest)
+        {
+            return GenericExceptionHandler.Handle(() => { 
+                return _vacancyProcessor.UpdateVacancy(vacancyUpdateReuest);
+            });
+        }
+        [HttpDelete]
+        [Route("DeleteVacancy")]
+        public GenericResopne<bool> DeleteVacancy(int vacancyId)
+        {
             return GenericExceptionHandler.Handle(() => 
-            { 
-                return _vacancyProcessor.CreateNewVacancy(vacancyCreateRequest); 
+            {
+                return _vacancyProcessor.DeleteVacancy(vacancyId);
             });
         }
     }

@@ -41,5 +41,11 @@ namespace EmpSystem.Infrastructure.Repositories
             _empSysDbContext.Remove(entity);
             _empSysDbContext.SaveChanges() ;
         }
+
+        public int DeleteRecord(Expression<Func<T, bool>> expression)
+        {
+            _empSysDbContext.Remove(expression);
+            return _empSysDbContext.SaveChanges();
+        }
     }
 }

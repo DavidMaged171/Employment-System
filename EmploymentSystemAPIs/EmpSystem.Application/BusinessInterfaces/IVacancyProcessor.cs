@@ -6,5 +6,9 @@ namespace EmpSystem.Application.BusinessInterfaces
     public interface IVacancyProcessor
     {
         public GenericResopne<VacancyResponseDTO> CreateNewVacancy(VacancyCreateRequest vacancyCreateRequest);
+        public GenericResopne<VacancyResponseDTO> UpdateVacancy(VacancyUpdateReuest vacancyUpdateReuest);
+        public GenericResopne<List<VacancyResponseDTO>> GetAllVacancies();
+        public GenericResopne<List<VacancyResponseDTO>> GetAvailableVacancies();
+        public GenericResopne<bool> DeleteVacancy(int vacancyId);
     }
 }

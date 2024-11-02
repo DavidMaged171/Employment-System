@@ -10,11 +10,11 @@ namespace EmpSystem.UnitTest
         [SetUp]
         public void Setup()
         {
-            _vacancyProcessor = new VacancyProcessor(new UnitOfWork(new Infrastructure.DatabaseContext.EmploymentSystemDBContext()));
+            _vacancyProcessor = new VacancyProcessor(UnitOfWorkSetUp.Get());
         }
 
         [Test]
-        public void Test1()
+        public void TestCreateVacancy()
         {
             _vacancyProcessor.CreateNewVacancy(new Application.DTOs.Request.VacancyCreateRequest()
             {
@@ -22,6 +22,17 @@ namespace EmpSystem.UnitTest
                 IsActive = true,
                 MaxNumberOfApplicantions = 1,
                 VacancyName="Software Engineer"
+            });
+        }
+        [Test]
+        public void TestUpdateVacancy()
+        {
+            _vacancyProcessor.UpdateVacancy(new Application.DTOs.Request.VacancyUpdateReuest()
+            {
+                ExpiryDate = DateTime.Now,
+                IsActive = true,
+                MaxNumberOfApplicantions = 1,
+                VacancyName = "Software Engineer"
             });
         }
     }
