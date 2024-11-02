@@ -21,6 +21,10 @@ namespace EmpSystem.Application.BusinessLogic
             var vacancy = _unitOfWork.vacancyRepository.FindWhere(x => x.VacancyId == vacancyApplicationRequest.vacancyId).FirstOrDefault();
             if (vacancy != null) 
             {
+                if(IsUserAppliedForSameVacancyBefore(vacancyApplicationRequest))
+                {
+                    return ResponseHandler<bool>.GenerateResponse(false, Enums.ResponseStatus.Failed, "Appplied Before, Can't apply again");
+                }
                 int numOfApplicants = _unitOfWork.vacancyApplicationsRepository.GetNumOfApplicants(vacancy.VacancyId);
                 if (vacancy.IsActive)
                 {
@@ -136,6 +140,12 @@ namespace EmpSystem.Application.BusinessLogic
                     ResponseMessage="Vacancy doesn't exist"
                 };
             }
+        }
+        private bool IsUserAppliedForSameVacancyBefore(VacancyApplicationRequest vacancyApplicationRequest)
+        {
+            return _unitOfWork.vacancyApplicationsRepository.FindWhere(
+                x=>x.VacancyId==vacancyApplicationRequest.vacancyId
+                &&x.ApplicantId==vacancyApplicationRequest.applicantId).Any();
         }
     }
 }
