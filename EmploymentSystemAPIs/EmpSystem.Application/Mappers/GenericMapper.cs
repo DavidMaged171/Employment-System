@@ -12,7 +12,7 @@ namespace EmpSystem.Application.Mappers
             var mapper=new Mapper(config);
             return mapper.Map<TDestination>(source);
         }
-        public static List<TDestination> Map(List<TSource> sourceList, List<TDestination> destinationList)
+        public static List<TDestination> Map(List<TSource> sourceList)
         {
             var destList= new List<TDestination>(capacity:sourceList.Count);
             for (int i = 0; i < sourceList.Count; i++) 

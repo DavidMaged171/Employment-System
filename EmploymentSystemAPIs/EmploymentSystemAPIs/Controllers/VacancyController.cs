@@ -59,5 +59,15 @@ namespace EmploymentSystemAPIs.Controllers
                 return _vacancyProcessor.ApplyForVacancy(vacancyApplicationRequest);
             });
         }
+        [HttpGet]
+        [Route("GetAvaliableVacancies")]
+        [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Client)]
+        public GenericResopne<List<VacancyResponseDTO>> GetAvaliableVacancies()
+        {
+            return GenericExceptionHandler.Handle(() =>
+            {
+                return _vacancyProcessor.GetAvailableVacancies();
+            });
+        }
     }
 }

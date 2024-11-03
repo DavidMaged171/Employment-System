@@ -30,7 +30,7 @@ namespace EmpSystem.Application.BusinessLogic
                 {
                     if (vacancy.ExpiryDate > DateTime.Now)
                     {
-                        if (numOfApplicants < vacancy.MaxNumberOfApplicantions)
+                        if (numOfApplicants < vacancy.MaxNumberOfApplications)
                         {
                             _unitOfWork.vacancyApplicationsRepository.AddRecord(
                                GenericMapper<VacancyApplicationRequest, VacancyApplications>.Map(vacancyApplicationRequest));
@@ -98,7 +98,7 @@ namespace EmpSystem.Application.BusinessLogic
             var res = _unitOfWork.vacancyRepository.GetAll().ToList();
             return new GenericResopne<List<VacancyResponseDTO>>()
             {
-                result = GenericMapper<Vacancy,VacancyResponseDTO>.Map(res,new List<VacancyResponseDTO> ()),
+                result = GenericMapper<Vacancy,VacancyResponseDTO>.Map(res),
                 ResopnseStatus=Enums.ResponseStatus.Success,
                 ResponseMessage="Returned Successfully"
             };
@@ -106,7 +106,13 @@ namespace EmpSystem.Application.BusinessLogic
 
         public GenericResopne<List<VacancyResponseDTO>> GetAvailableVacancies()
         {
-            throw new NotImplementedException();
+            var result=_unitOfWork.vacancyRepository.GetAvailableVacancies();
+            return new GenericResopne<List<VacancyResponseDTO>>() 
+            {
+                result=GenericMapper<Vacancy,VacancyResponseDTO>.Map(result),
+                ResopnseStatus=Enums.ResponseStatus.Success,
+                ResponseMessage="Success"
+            };
         }
 
         public GenericResopne<VacancyResponseDTO> UpdateVacancy(VacancyUpdateReuest vacancyUpdateReuest)
@@ -118,7 +124,7 @@ namespace EmpSystem.Application.BusinessLogic
                 //entity = GenericMapper<VacancyUpdateReuest, Vacancy>.Map(vacancyUpdateReuest);
                 entity.CreatedDate = createdDate;
                 entity.ExpiryDate = vacancyUpdateReuest.ExpiryDate;
-                entity.MaxNumberOfApplicantions = vacancyUpdateReuest.MaxNumberOfApplicantions;
+                entity.MaxNumberOfApplications = vacancyUpdateReuest.MaxNumberOfApplicantions;
                 entity.VacancyName=vacancyUpdateReuest.VacancyName;
                 entity.IsActive=vacancyUpdateReuest.IsActive;
                 
