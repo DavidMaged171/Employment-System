@@ -21,7 +21,11 @@ namespace EmpSystem.Application.BusinessLogic
             var vacancy = _unitOfWork.vacancyRepository.FindWhere(x => x.VacancyId == vacancyApplicationRequest.vacancyId).FirstOrDefault();
             if (vacancy != null) 
             {
-                if(IsUserAppliedForSameVacancyBefore(vacancyApplicationRequest))
+                if(IsUserAppliedForPositionToday(vacancyApplicationRequest.applicantId))
+                {
+                    return ResponseHandler<bool>.GenerateResponse(false, Enums.ResponseStatus.Failed, "Can't apply for 2 positions at same day");
+                }
+                if (IsUserAppliedForSameVacancyBefore(vacancyApplicationRequest))
                 {
                     return ResponseHandler<bool>.GenerateResponse(false, Enums.ResponseStatus.Failed, "Appplied Before, Can't apply again");
                 }
@@ -152,6 +156,12 @@ namespace EmpSystem.Application.BusinessLogic
             return _unitOfWork.vacancyApplicationsRepository.FindWhere(
                 x=>x.VacancyId==vacancyApplicationRequest.vacancyId
                 &&x.ApplicantId==vacancyApplicationRequest.applicantId).Any();
+        }
+        private bool IsUserAppliedForPositionToday(int applicantId)
+        {
+            var res= _unitOfWork.vacancyApplicationsRepository.FindWhere(x=>x.ApplicantId==applicantId 
+                                                        &&x.ApplicationDate== DateTime.Today).FirstOrDefault();
+            return res != null;
         }
     }
 }
