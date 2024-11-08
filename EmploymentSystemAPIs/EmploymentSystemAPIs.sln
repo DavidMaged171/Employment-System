@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmploymentSystemAPIs", "EmploymentSystemAPIs\EmploymentSystemAPIs.csproj", "{FA58F255-C4C3-4BD6-A5AF-86880B0A8965}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmploymentSystemAPIs", "EmploymentSystemAPIs\EmploymentSystemAPIs.csproj", "{FA58F255-C4C3-4BD6-A5AF-86880B0A8965}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpSystem.Application", "EmpSystem.Application\EmpSystem.Application.csproj", "{EF79E092-D517-4182-B25D-08F28A495261}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmpSystem.Application", "EmpSystem.Application\EmpSystem.Application.csproj", "{EF79E092-D517-4182-B25D-08F28A495261}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpSystem.Core", "EmpSystem.Core\EmpSystem.Core.csproj", "{634C5A08-C20D-481D-8812-A969FAB70021}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmpSystem.Core", "EmpSystem.Core\EmpSystem.Core.csproj", "{634C5A08-C20D-481D-8812-A969FAB70021}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpSystem.Infrastructure", "EmpSystem.Infrastructure\EmpSystem.Infrastructure.csproj", "{FC54896D-7D2E-43A0-919B-AC9CA5812F83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmpSystem.Infrastructure", "EmpSystem.Infrastructure\EmpSystem.Infrastructure.csproj", "{FC54896D-7D2E-43A0-919B-AC9CA5812F83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpSystem.UnitTest", "EmpSystem.UnitTest\EmpSystem.UnitTest.csproj", "{2F99B5E9-2297-49B8-8F47-3C3CDDE70D69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmpSystem.UnitTest", "EmpSystem.UnitTest\EmpSystem.UnitTest.csproj", "{2F99B5E9-2297-49B8-8F47-3C3CDDE70D69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpSystem.Logging", "EmpSystem.Logging\EmpSystem.Logging.csproj", "{35638C89-8FA6-4B7D-B0A4-903A84D659D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{2F99B5E9-2297-49B8-8F47-3C3CDDE70D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F99B5E9-2297-49B8-8F47-3C3CDDE70D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F99B5E9-2297-49B8-8F47-3C3CDDE70D69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35638C89-8FA6-4B7D-B0A4-903A84D659D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35638C89-8FA6-4B7D-B0A4-903A84D659D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35638C89-8FA6-4B7D-B0A4-903A84D659D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35638C89-8FA6-4B7D-B0A4-903A84D659D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
