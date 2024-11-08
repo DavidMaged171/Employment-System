@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "2a8a5475-5a6b-4331-8a49-9108d47fae9e",
+		"name": "Vacancy CRUD Operations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "11305418"
+	},
+	"item": [
+		{
+			"name": "CreateNewVacancy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"vacancyName\": \"from postman\",\r\n  \"maxNumberOfApplicantions\": 0,\r\n  \"expiryDate\": \"2024-11-02T08:27:30.735Z\",\r\n  \"isActive\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:7154/api/Vacancy/CreateNewVacancy"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllVacancies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resopnseStatus\": 1,\r\n  \"responseMessage\": \"string\",\r\n  \"result\": [\r\n    {\r\n      \"vacancyId\": 0,\r\n      \"vacancyName\": \"string\",\r\n      \"maxNumberOfApplicantions\": 0,\r\n      \"createdDate\": \"2024-11-08T16:56:57.963Z\",\r\n      \"expiryDate\": \"2024-11-08T16:56:57.963Z\",\r\n      \"isActive\": true\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:7154/api/Vacancy/GetAllVacancies"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateVacancy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"vacancyId\": 3,\r\n  \"vacancyName\": \"string\",\r\n  \"maxNumberOfApplicantions\": 0,\r\n  \"expiryDate\": \"2024-11-08T16:58:09.430Z\",\r\n  \"isActive\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:7154/api/Vacancy/UpdateVacancy"
+			},
+			"response": []
+		},
+		{
+			"name": "ApplyForVacancy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"vacancyId\": 1,\r\n  \"applicantId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:7154/api/Vacancy/ApplyForVacancy"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAvaliableVacancies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://localhost:7154/api/Vacancy/GetAvaliableVacancies"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteVacancy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"vacancyId\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:7154/api/Vacancy/DeleteVacancy"
+			},
+			"response": []
+		}
+	]
+}
