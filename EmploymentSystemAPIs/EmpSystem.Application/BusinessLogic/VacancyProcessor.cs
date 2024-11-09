@@ -111,14 +111,15 @@ namespace EmpSystem.Application.BusinessLogic
             try
             {
                 _logger.Log(LogLevel.Information, "DeleteVacancy Started");
-                var res = _unitOfWork.vacancyRepository.DeleteRecord(entity => entity.VacancyId == vacancyId);
-                if (res == 1)
+                var vacancy = _unitOfWork.vacancyRepository.FindWhere(entity => entity.VacancyId == vacancyId).FirstOrDefault();
+                if(vacancy!=null)
                 {
+                   _unitOfWork.vacancyRepository.DeleteRecord(vacancy);
                     return ResponseHandler<bool>.GenerateResponse(true, ResponseStatus.Success, "Deleted Successfully");
                 }
                 else
                 {
-                    return ResponseHandler<bool>.GenerateResponse(false, ResponseStatus.Failed, "Error occurred");
+                    return ResponseHandler<bool>.GenerateResponse(true, ResponseStatus.Failed, "Vacancy Doesn't Exist");
                 }
             }
             catch (Exception ex) 

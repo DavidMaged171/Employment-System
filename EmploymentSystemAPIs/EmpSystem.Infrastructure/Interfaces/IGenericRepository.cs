@@ -10,6 +10,5 @@ namespace EmpSystem.Infrastructure.Interfaces
         T UpdateRecord(T entity);
         T AddRecord(T entity);
         void DeleteRecord(T entity);
-        int DeleteRecord(Expression<Func<T, bool>> expression);
     }
 }
