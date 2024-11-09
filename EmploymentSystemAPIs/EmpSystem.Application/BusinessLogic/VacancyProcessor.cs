@@ -106,12 +106,12 @@ namespace EmpSystem.Application.BusinessLogic
             }
         }
 
-        public GenericResopne<bool> DeleteVacancy(int vacancyId)
+        public GenericResopne<bool> DeleteVacancy(VacancyDeleteRequest vacancyDeleteRequest)
         {
             try
             {
                 _logger.Log(LogLevel.Information, "DeleteVacancy Started");
-                var vacancy = _unitOfWork.vacancyRepository.FindWhere(entity => entity.VacancyId == vacancyId).FirstOrDefault();
+                var vacancy = _unitOfWork.vacancyRepository.FindWhere(entity => entity.VacancyId == vacancyDeleteRequest.vacancyId).FirstOrDefault();
                 if(vacancy!=null)
                 {
                    _unitOfWork.vacancyRepository.DeleteRecord(vacancy);

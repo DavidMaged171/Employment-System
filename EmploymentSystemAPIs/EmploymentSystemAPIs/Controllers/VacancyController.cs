@@ -43,11 +43,11 @@ namespace EmploymentSystemAPIs.Controllers
         }
         [HttpDelete]
         [Route("DeleteVacancy")]
-        public GenericResopne<bool> DeleteVacancy(int vacancyId)
+        public GenericResopne<bool> DeleteVacancy(VacancyDeleteRequest vacancyDeleteRequest)
         {
             return GenericExceptionHandler.Handle(() => 
             {
-                return _vacancyProcessor.DeleteVacancy(vacancyId);
+                return _vacancyProcessor.DeleteVacancy(vacancyDeleteRequest);
             });
         }
         [HttpPost]
